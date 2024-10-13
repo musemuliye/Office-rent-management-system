@@ -1,0 +1,30 @@
+<div class="card h-100">
+  <div class="card-header d-flex justify-content-between">
+    <span class="me-2 text-start"><i class="bi bi-table"></i> Payment</span>
+    <a href={% url "payment_create" lease.office.block.pk lease.office.floor.pk lease.office.pk lease.pk %} class="me-2 text-end"><i class="bi bi-plus-circle"></i></a>
+  </div>
+  <div class="card-body overflow-scroll">
+    <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+        <thead>
+          <tr class="text-truncate">
+            <th>Amount (ETB)</th>
+            <th>Date</th>
+            <th>Payment Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in lease.payments.all %}
+            <tr>
+              <td><a href={% url "payment_detail" payment.lease.office.block.pk payment.lease.office.floor.pk payment.lease.office.pk payment.lease.pk payment.pk %}>{{ payment.amount }}</a></td>
+              <td>{{payment.date}}</td>
+              <td>{{ payment.payment_method }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>

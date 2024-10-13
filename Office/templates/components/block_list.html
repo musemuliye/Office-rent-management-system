@@ -1,0 +1,36 @@
+<div class="card h-100">
+  <div class="card-header d-flex justify-content-between">
+    <span class="me-2 text-start"><i class="bi bi-table"></i> Blocks</span>
+    <a href={% url "block_create" %} class="me-2 text-end"><i class="bi bi-plus-circle"></i></a>
+  </div>
+  <div class="card-body overflow-scroll">
+    <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+        <thead>
+          <tr class="text-truncate">
+            <th>Block Code</th>
+            <th>Block Name</th>
+            <th>Address</th>
+            <th>Total Floor</th>
+            <th>Total Office</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in blocks %}
+            <tr>
+              <td><a href={% url "block_detail" block.pk %}>{{ block.block_code }}</a></td>
+              <td>{{block.name}}</td>
+              <td>{{ block.address }}</td>
+              <td>{{ block.total_floors }}</td>
+              <td>{{ block.total_offices }}</td>
+              <td>{{ block.construction_year }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>

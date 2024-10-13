@@ -1,0 +1,22 @@
+.form-text {
+    color: #36cc8b;
+}
+
+.form-error-text {
+    color: #dc3545; 
+}
+
+.form-label {
+    color: #36b9cc; 
+}
+
+.requiredField::after, .asteriskField {
+    content: ' Required';
+    color: #dc3545; /* Color for the required text */
+    font-weight: bold;
+    font-size: xx-small;
+}
+
+.asteriskField {
+    color: #dc3545; /* Color for the required text */
+}

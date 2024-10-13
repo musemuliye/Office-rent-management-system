@@ -1,0 +1,33 @@
+<div class="card h-100">
+  <div class="card-header d-flex justify-content-between">
+    <span class="me-2 text-start"><i class="bi bi-table"></i> Offices</span>
+  </div>
+  <div class="card-body overflow-scroll">
+    <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+        <thead>
+          <tr class="text-truncate">
+            <th>Office Number</th>
+            <th>Block</th>
+            <th>Floor</th>
+            <th>Area (m<sup>2</sup>)</th>
+            <th>Available</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for office in office %}
+            <tr>
+              <td><a href={% url "office_detail" office.block.pk office.floor.pk office.pk %}>{{ office.office_number }}</a></td>
+              <td><a href={% url "block_detail" office.block.pk %}>{{ office.block.block_code }}</a></td>
+              <td><a href={% url "floor_detail" office.block.pk office.floor.pk %}>{{office.floor}}</a></td>
+              <td>{{ office.size }}</td>
+              <td class="fs- text-center">{% if office.is_available %}<i class="bi bi-check text-success"></i>{% else %}<i class="bi bi-x text-danger"></i>{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>

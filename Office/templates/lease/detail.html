@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block page_title %}Office {{office.office_number}}{% endblock page_title %}
+{% block header %}
+
+{% include 'components/header.html' %}
+
+{% endblock header %}
+
+{% block content %}
+<div class="m-2">
+  {% include "components/sidebar.html" %}
+</div>
+
+
+<div class="m-2">
+  {% include "components/lease_card.html" %}
+</div>
+<div class="m-3">
+  {% include "components/payment_list.html" %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,95 @@
+<div class="container-fluid my-2">
+  <h2>{{ building_block }}</h2>
+  <div class="row fs-5">
+    <div class="col-12 mb-4">
+      <div class="card card-custom border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                {{ building_block.name }}</div>
+              <div class="h5 mb-0 font-weight-bold text-primary">{{ building_block.block_code }}</div>
+              <div class="h5 mb-0 font-weight-bold text-primary">{{ building_block.address }}</div>
+              <div class="h5 mb-0 font-weight-bold text-primary">{{ building_block.address.get_addresse }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-buildings text-primary fs-1"></i>
+              {% if building_block.address.wereda %}<div class="h5 mb-0 font-weight-bold text-primary"> Wereda {{ building_block.address.wereda }} </div> {% endif %}
+              {% if building_block.address.subcity %}<div class="h5 mb-0 font-weight-bold text-primary"> Subcity {{ building_block.address.subcity }} </div> {% endif %}
+              <div class="h5 mb-0 font-weight-bold text-primary"> 
+                <a href={% url "block_update" building_block.pk %}><i class="bi bi-pencil text-primary"></i></a> 
+                <a href={% url "block_create" %}><i class="bi bi-plus text-primary"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-secondary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                Floor</div>
+              <div class="h5 mb-0 font-weight-bold text-secondary">{{ floor.count }}/{{ building_block.total_floors }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-buildings text-secondary fs-1"></i>
+              <div class="h5 mb-0"> <a href="{% url "floor_create" building_block.pk %}"><i class="bi bi-plus-circle text-secondary"></i></a></div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                Office</div>
+              <div class="h5 mb-0 font-weight-bold text-success">{{office.count}}/{{ building_block.total_offices }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-success fs-1"></i>
+              <div class="h5 mb-0"> <a href=""><i class="bi bi-plus-circle text-success"></i></a></div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                Available Office</div>
+              <div class="h5 mb-0 font-weight-bold text-info">{{ office_without_lease.count }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-info fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-warning shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                Rented Office</div>
+              <div class="h5 mb-0 font-weight-bold text-warning">{{ office_with_lease.count }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-warning fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

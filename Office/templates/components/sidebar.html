@@ -1,0 +1,81 @@
+{% load static %}
+
+<nav id="orentNavBar">
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class="bi bi-arrow-bar-right"></i>
+      </span>
+      <h3 class="orent__sidebar__title">ORent</h3>
+    </div>
+
+    <div>
+      <div class="orent__nav__list">
+        <div class="orent__nav__items">
+          <h3 class="orent__nav__subtitle">Profile</h3>
+          <a href="{% url "dashboard" %}" class="orent__nav__link">
+            <i class="bi bi-house orent__nav__icon"></i>
+            <span class="orent__nav__name">Home</span>
+          </a>
+
+          <div class="orent__nav__dropdown">
+            <a href="#" class="orent__nav__link orent__nav__link_dd">
+              <i class="bi bi-people orent__nav__icon"></i>
+              <span class="orent__nav__name">Users</span>
+              <i class="bx bx-chevron-right orent__nav__dropdown-icon"></i>
+            </a>
+            <div class="orent__nav__dropdown-collapse">
+              <div class="orent__nav__dropdown-content">
+                <a href="#" class="orent__nav__dropdown-item">Staffs</a>
+                <a href="#" class="orent__nav__dropdown-item">Create Account for User</a>
+                <a href="#" class="orent__nav__dropdown-item">Tenant</a>
+                <a href="#" class="orent__nav__dropdown-item">Create Account for Tenant</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="orent__nav__items">
+          <h3 class="orent__nav__subtitle">Menu</h3>
+
+          <div class="orent__nav__dropdown">
+            <a href="#" class="orent__nav__link orent__nav__link_dd">
+              <i class="bi bi-buildings orent__nav__icon" ></i>
+              <span class="orent__nav__name">Block</span>
+              <i class="bx bx-chevron-right orent__nav__dropdown-icon"></i>
+            </a>
+            <div class="orent__nav__dropdown-collapse">
+              <div class="orent__nav__dropdown-content">
+                {% for block in blocks %}
+                <a href={% url "block_detail" block.pk %} class="orent__nav__dropdown-item">{{ block.name }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="orent__nav__link">
+            <i class="bi bi-wallet orent__nav__icon"></i>
+            <span class="orent__nav__name">Lease</span>
+          </a>
+          <a href="#" class="orent__nav__link">
+            <i class="bi bi-wallet orent__nav__icon"></i>
+            <span class="orent__nav__name">Payments</span>
+          </a>
+          <a href="#" class="orent__nav__link">
+            <i class="bi bi-tools orent__nav__icon"></i>
+            <span class="orent__nav__name">Maintenance</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <a href="#" class="log-out">
+          <i class='bi bi-box-arrow-right'></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+  {% block script %}
+    <script {% static "js/orent/sidebar.js" %}></script>
+  {% endblock script %}
+

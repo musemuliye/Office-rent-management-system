@@ -1,0 +1,37 @@
+<div class="card h-100">
+  <div class="card-header d-flex justify-content-between">
+    <span class="me-2 text-start"><i class="bi bi-table"></i> Lease</span>
+  </div>
+  <div class="card-body overflow-scroll">
+    <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+        <thead>
+          <tr class="text-truncate">
+            <th>Block Code</th>
+            <th>Office Number</th>
+            <th>Tenant</th>
+            <th>Start</th>
+            <th>end</th>
+            <th>Price (ETB)</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lease in lease %}
+            <tr>
+              <td><a href={% url "block_detail" lease.office.block.pk %}>{{ lease.office.block.block_code }}</a></td>
+              <td><a href={% url "office_detail" lease.office.block.pk lease.office.floor.pk lease.office.pk %}>{{lease.office.office_number}}</a></td>
+              <td>{{ lease.tenant }}</td>
+              <td>{{ lease.start_date }}</td>
+              <td>{{ lease.end_date }}</td>
+              <td>{{ lease.rent_amount }}</td>
+              <td class="fs- text-center">{% if lease.is_active %}<i class="bi bi-check text-success"></i>{% else %}<i class="bi bi-x text-danger"></i>{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>

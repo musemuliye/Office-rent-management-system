@@ -1,0 +1,15 @@
+{%load crispy_forms_tags %}
+<form method="post" action={% url "block_create" %}>
+    <div class="row">
+      {% csrf_token %}
+      <div class="col-xxl-6 mb-3">
+        {{ block_form|crispy }}
+      </div>
+      <div class="col-xxl-6 mb-3">
+        {{ address_form|crispy }}
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>  

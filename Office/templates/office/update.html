@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}Update {{update_block}}{% endblock page_title %}
+{% block style %}
+<link rel="stylesheet" href={% static "css/orent/form.css" %}>
+{% endblock style %}
+
+{% block header %}
+
+{% include 'components/header.html' %}
+
+{% endblock header %}
+
+{% block content %}
+<div class="m-2">
+  {% include "components/sidebar.html" %}
+</div>
+
+<div class="card card-custom m-2 border-left-secondary shadow h-100 py-2">
+  <div class="card-body">
+    <div class="row no-gutters align-items-center">
+      <div class="col mr-2">
+        <div class="h1 font-weight-bold text-secondary text-uppercase mb-1">
+          Update {{floor.block}}</div>
+        <div class="h1 font-weight-bold text-secondary text-uppercase mb-1">
+          Floor {{floor.floor_type}}-{{floor.order}}</div>
+      </div>
+      <div class="col-auto">
+        <i class="bi bi-buildings text-secondary fs-1"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-2 mx-4">
+  {% include "components/form.html" with form=office_form %}
+</div>
+
+{% endblock content %}

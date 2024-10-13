@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block page_title %}Blocks{% endblock page_title %}
+{% block header %}
+
+{% include 'components/header.html' %}
+
+{% endblock header %}
+
+{% block content %}
+<div class="m-2">
+  {% include "components/sidebar.html" %}
+</div>
+
+
+<div class="m-2">
+  {% include "components/floor_card.html" %}
+</div>
+
+
+<div class="row mx-2">
+  <div class="col-xs-12 col-xxl-6 mb-3">
+    {% include "components/office_list.html" %}
+  </div>
+  <div class="col-xs-12 col-xxl-6 mb-3">
+    {% include "components/lease_list.html" %}
+  </div>
+  {% comment %} <div class="col-xs-12 col-xxl-6 mb-3">
+    {% include "components/floor_list.html" %}
+  </div> {% endcomment %}
+</div>
+
+{% endblock content %}

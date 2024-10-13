@@ -1,0 +1,31 @@
+<div class="card h-100">
+  <div class="card-header card-header d-flex justify-content-between">
+    <span class="me-2 text-start"><i class="bi bi-table"></i> Floors</span>
+  </div>
+  <div class="card-body overflow-scroll">
+    <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+        <thead>
+          <tr class="text-truncate">
+            <th>Floor</th>
+            <th>Block</th>
+            <th>Name</th>
+            <th>Total Office</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for floor in floor %}
+            <tr>
+              <td><a href={% url "floor_detail" floor.block.pk floor.pk %}>{{ floor }}</a></td>
+              <td><a href={% url "block_detail" floor.block.pk %}>{{ floor.block.block_code }}</a></td>
+              <td>{{floor.name}}</td>
+              <td>{{ floor.total_offices }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>

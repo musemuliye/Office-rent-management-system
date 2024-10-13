@@ -1,0 +1,100 @@
+<div class="container-fluid my-2">
+  <h2>{{ lease.tenant }} Contract</h2>
+  <h3>{{ lease.office.block }}, {{ lease.office.floor }}</h3>
+  <h4>Office: {{ lease.office.office_number }}</h4>
+  <div class="row fs-5">
+    <div class="col-12 mb-4">
+      <div class="card card-custom border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                {{ lease.office.block.name }} {{ lease.office.block.block_code }} {{ lease.office.floor}}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">Office number {{ lease.office.office_number }}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">{{ lease.office.block.address }}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">{{ lease.office.block.address.get_addresse }}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">Lease Start date {{ lease.start_date }}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">Lease End date {{ lease.end_date }}</div>
+              <div class="h5 mb-0 font-weight-bold text-success">Price/Value {{ lease.rent_amount }} ETB / {{lease.office.rent_price}} ETB</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-buildings text-success fs-1"></i>
+              {% if lease.office.block.address.wereda %}<div class="h5 mb-0 font-weight-bold text-success"> Wereda {{ lease.office.block.address.wereda }} </div> {% endif %}
+              {% if lease.office.block.address.subcity %}<div class="h5 mb-0 font-weight-bold text-success"> Subcity {{ lease.office.block.address.subcity }} </div> {% endif %}
+              <div class="h5 mb-0 font-weight-bold text-success"> 
+                <a href={% url "lease_update" lease.office.block.pk lease.office.floor.pk lease.office.pk lease.pk %}><i class="bi bi-pencil text-success"></i></a> 
+                <a href={% url "lease_create" lease.office.block.pk lease.office.floor.pk lease.office.pk%}><i class="bi bi-plus text-success"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                Block</div>
+              <div class="h5 mb-0 font-weight-bold text-primary">{{ blocks.count }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-buildings text-primary fs-1"></i>
+              <div class="h5 mb-0"> <a href={% url "block_create" %}><i class="bi bi-plus-circle text-primary"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-secondary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                Floor</div>
+              <div class="h5 mb-0 font-weight-bold text-secondary">{{ lease.office.floor }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-secondary fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                Office</div>
+              <div class="h5 mb-0 font-weight-bold text-success">{{lease.office.office_number}}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-success fs-1"></i>
+              <div class="h5 mb-0"> <a href={% url "office_create" lease.office.block.pk lease.office.floor.pk %}><i class="bi bi-plus-circle text-success"></i></a></div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card card-custom border-left-warning shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                Payment</div>
+              <div class="h5 mb-0 font-weight-bold text-warning">{{ lease.payments.count }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-pc-display text-warning fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
